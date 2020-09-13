@@ -5,18 +5,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class ContinueWatch : AppCompatActivity() {
-    
+
     private var secondsElapsed: Int = 0
     private var isRunning: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_continue_watch)
-        if (savedInstanceState != null) {
-            secondsElapsed = savedInstanceState.getInt("seconds")
-        }
-        findViewById<TextView>(R.id.textSecondsElapsed).text =
-                String.format(getString(R.string.seconds_elapsed) + " %s", secondsElapsed++)
     }
 
     override fun onResume() {
@@ -42,5 +37,12 @@ class ContinueWatch : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("seconds", secondsElapsed)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        secondsElapsed = savedInstanceState.getInt("seconds")
+        findViewById<TextView>(R.id.textSecondsElapsed).text =
+                String.format(getString(R.string.seconds_elapsed) + " %s", secondsElapsed)
     }
 }
