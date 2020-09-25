@@ -12,6 +12,10 @@ class ContinueWatch : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_continue_watch)
+        findViewById<TextView>(R.id.textSecondsElapsed).post {
+            findViewById<TextView>(R.id.textSecondsElapsed).text =
+                    String.format(getString(R.string.seconds_elapsed) + " %s", secondsElapsed)
+        }
     }
 
     override fun onResume() {

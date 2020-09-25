@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(this, KeyboardAvailability.class);
                 startActivity(intent3);
                 break;
+            case R.id.button5:
+                Intent intent4 = new Intent(this, ContinueWatch2.class);
+                startActivity(intent4);
+                break;
         }
     }
 }
